@@ -21,22 +21,22 @@ public class AutoSendThread implements Runnable {
 
     @Override
     public void run() {
-        while (true) {
-            String message = MyQueue.getPush();
-            if (exchangeType == 1) {
-                if(consumerChannels.size() == 0){
-                    continue;//放弃这条消息
-                }
-                Random random = new Random();
-                int i = random.nextInt(0, consumerChannels.size());
-                Channel targetChannel = consumerChannels.get(i);
-                System.out.println(message+"  消息发送到： "+targetChannel);
-                targetChannel.writeAndFlush(Unpooled.copiedBuffer(message.getBytes()));
-            } else if (exchangeType == 2) {
-                for (Channel c: consumerChannels) {
-                    c.writeAndFlush(Unpooled.copiedBuffer(message.getBytes()));
-                }
-            }
-        }
+//        while (true) {
+//            String message = MyQueue.getPush();
+//            if (exchangeType == 1) {
+//                if(consumerChannels.size() == 0){
+//                    continue;//放弃这条消息
+//                }
+//                Random random = new Random();
+//                int i = random.nextInt(0, consumerChannels.size());
+//                Channel targetChannel = consumerChannels.get(i);
+//                System.out.println(message+"  消息发送到： "+targetChannel);
+//                targetChannel.writeAndFlush(Unpooled.copiedBuffer(message.getBytes()));
+//            } else if (exchangeType == 2) {
+//                for (Channel c: consumerChannels) {
+//                    c.writeAndFlush(Unpooled.copiedBuffer(message.getBytes()));
+//                }
+//            }
+//        }
     }
 }

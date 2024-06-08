@@ -48,7 +48,8 @@ public class SyncHandler extends ChannelInboundHandlerAdapter {
             }
             if(timesCount.get() == REDO_TIMES){
                 //跑完所有重试，进入兜底
-
+                //暂时打个log
+                System.out.println("发送失败"+message);
             }
         } catch (InterruptedException e) {
             e.printStackTrace();
